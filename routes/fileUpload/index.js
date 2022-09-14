@@ -16,7 +16,7 @@ const router = express.Router();
 
 // Middelwares
 router.use(cors());
-router.use(express.json({ limit: "5mb" }));
+router.use(express.urlencoded({ extended: false }))
 router.use(useragent.express());
 // Data sanitization against NoSQL query injection
 router.use(mongoSanitize());
