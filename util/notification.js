@@ -1,6 +1,6 @@
 const emailService = require("./emailSetup");
-const sendMailQueue  = require("./queue");
-const template = require('./template');
+const sendMailQueue = require("./queue");
+const template = require("./template");
 
 /**
  *
@@ -9,11 +9,11 @@ const template = require('./template');
  * @param {*} password
  * @returns {*} sends an email to a new user
  */
-const registrationEmail = (emailTo, name,password) => {
-  const subject = 'login details';
+const registrationEmail = (emailTo, name, password) => {
+  const subject = "login details";
   const body = `<p>Dear ${name},</p>
   <p>We are thrilled to have you.</p>
-  <p>your login details: email - ${emailTo} password - ${password} <p>`
+  <p>your login details: email - ${emailTo} password - ${password} <p>`;
   const message = template(subject, body, emailTo);
 
   const options = {
@@ -26,10 +26,8 @@ const registrationEmail = (emailTo, name,password) => {
 };
 
 // Consumer: this gets called each time the producer receives a new email.
-sendMailQueue.process(async job => {
+sendMailQueue.process(async (job) => {
   emailService.mailSender(job.data);
 });
-
-
 
 export default registrationEmail;

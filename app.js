@@ -20,17 +20,15 @@ app.use(morgan("dev"));
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads');
+    cb(null, "uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + '-' + file.originalname);
-  }
+    cb(null, new Date().toISOString() + "-" + file.originalname);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'text/csv'
-  ) {
+  if (file.mimetype === "text/csv") {
     cb(null, true);
   } else {
     cb(null, false);
@@ -40,9 +38,8 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: fileStorage, fileFilter: fileFilter });
 
 app.use("/auth", authHandler);
-app.use("/file-upload",upload.single("csvfile"),fileUploadHandler);
-app.use("/detail",detailHandler);
-
+app.use("/file-upload", upload.single("csvfile"), fileUploadHandler);
+app.use("/detail", detailHandler);
 
 app.all("*", (req, res, next) => {
   next(new AppError(404, "global", "G_E011", `${req.originalUrl}`, true));

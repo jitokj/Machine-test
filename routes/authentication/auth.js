@@ -11,6 +11,8 @@ module.exports.login = async (req, res, next) => {
 module.exports.logout = async (req, res, next) => {
   logger.info("START: logout api");
   let reqData = JSON.parse(req.body);
-  await authService.logout (reqData);
-  return responser.send(200, "global", "G_E008", req, res, {message: "logout successfull"});
+  await authService.logout(reqData);
+  return responser.send(200, "global", "G_E008", req, res, {
+    message: "logout successfull",
+  });
 };

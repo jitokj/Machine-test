@@ -4,14 +4,13 @@ const TokenModel = require("../models/token.model");
 
 module.exports.signToken = async (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
-    expiresIn: 1800 // expires in 30 min
+    expiresIn: 1800, // expires in 30 min
   });
 };
 
 module.exports.tokenVerify = async (token) => {
   return jwt.verify(token, process.env.JWT_SECRET);
 };
-
 
 module.exports.verify_token = async (token, options) => {
   try {
@@ -54,30 +53,29 @@ module.exports.updateToken = async (id, udatedata) => {
 };
 
 module.exports.createLogin = async (user, ip, useragent) => {
-    const id = user._id;
-    const payload = {
-      user: id,
-      jwtToken: this.signToken(id,),
-      refreshToken: this.refreshToken(id),
-      requestData: useragent,
-      createdByIp: ip,
-    };
-    const token = await TokenModel.create(payload);
-    logger.data("Generated token details", token);
-    return {
-      token: token.jwtToken,
-      refreshToken: token.refreshToken,
-      type: user?.accountType,
-      email: user?.email,
-      name: user?.name,
-    };
+  const id = user._id;
+  const payload = {
+    user: id,
+    jwtToken: this.signToken(id),
+    refreshToken: this.refreshToken(id),
+    requestData: useragent,
+    createdByIp: ip,
   };
-  
-  module.exports.refreshToken = async (id) => {
-    return jwt.sign({ id: id }, process.env.REFRESH_SECRET, {
-      //expiresIn: 86400 // expires in 24 hours
-      expiresIn: "30d",
-      //expiresIn: "7d",
-    });
+  const token = await TokenModel.create(payload);
+  logger.data("Generated token details", token);
+  return {
+    token: token.jwtToken,
+    refreshToken: token.refreshToken,
+    type: user?.accountType,
+    email: user?.email,
+    name: user?.name,
   };
-  
+};
+
+module.exports.refreshToken = async (id) => {
+  return jwt.sign({ id: id }, process.env.REFRESH_SECRET, {
+    //expiresIn: 86400 // expires in 24 hours
+    expiresIn: "30d",
+    //expiresIn: "7d",
+  });
+};

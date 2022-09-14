@@ -34,24 +34,23 @@ router.patch(
 
 // delete api
 router.delete(
-    "/:userid",
-    auth.verifyToken(),
-     // restricted to admin with access level -> super
-    auth.restrictTo("super"),
-    catchError(detailHandler.deletedetail)
-  );
- 
-  // get details of the user
-  router.get(
-    "/:userid",
-    auth.verifyToken(),
-     // restricted to admin with access level -> super
-    auth.restrictTo("super"),
-    catchError(detailHandler.getdetail)
-  );
+  "/:userid",
+  auth.verifyToken(),
+  // restricted to admin with access level -> super
+  auth.restrictTo("super"),
+  catchError(detailHandler.deletedetail)
+);
 
-  // get all details
-  router.get("/",catchError(detailHandler.getAll))
-  
-  
+// get details of the user
+router.get(
+  "/:userid",
+  auth.verifyToken(),
+  // restricted to admin with access level -> super
+  auth.restrictTo("super"),
+  catchError(detailHandler.getdetail)
+);
+
+// get all details
+router.get("/", catchError(detailHandler.getAll));
+
 module.exports = router;
