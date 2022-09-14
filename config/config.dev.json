@@ -1,0 +1,9 @@
+{
+    "DB_CONNECTION_URL": "",
+    "JWT_SECRET": "Ecvk3MKekQ4CFGWDVrElukrZLVuN3vXnUhkstwfYiBaRkgT8v8SotHZ0tlfT2Xgr",
+    "PORT": "8080",
+    "REFRESH_SECRET": "fgbk3bMKekQ4CFGWDVbblukrZLVuN3vXnUhkstwfYibaRkvT8v8SotHcbtlfT2bgt",
+    "REDIS_URL":"redis://127.0.0.1:6379",
+    "NODE_ENV": "test",
+    "SENDGRID_API_KEY": ""
+  }

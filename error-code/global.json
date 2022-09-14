@@ -1,0 +1,20 @@
+{
+    "en": {
+      "G_E001": "Something went wrong!",
+      "G_E002": "Invalid Casting",
+      "G_E003": "Duplicate field value",
+      "G_E004": "Invalid input data",
+      "G_E005": "Invalid token. Please log in again!",
+      "G_E006": "Your token has expired! Please log in again.",
+      "G_E007": "login successfully",
+      "G_E008": "logout successfull",
+      "G_E009": "refresh token is mandatory",
+      "G_E010": "Error in logout",
+      "G_E011": "Can't find URL on this server!",
+      "G_E012": "file uploaded successfully",
+      "G_E013": "employee details updated",
+      "G_E014": "employee details deleted",
+      "G_E015": "fetch employee detail"
+    }
+  }
+  
