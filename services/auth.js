@@ -6,10 +6,8 @@ const AppError = require("../core/errorHandler/appError");
 
 module.exports.login = async (reqBody, ip, useragent) => {
     const { email, password } = reqBody;
-    let filter = {};
-    let errorCode = "L_E014";
-    if (!email || !password) throw new AppError(400, "auth", "L_E011");
-    filter = {
+    if (!email || !password) throw new AppError(400, "global", "G_E016");
+   const filter = {
       email,
       Status: 1,
     };
@@ -23,7 +21,7 @@ module.exports.login = async (reqBody, ip, useragent) => {
     logger.data("User info fetched");
   
     if (!user || !(await user.correctPassword(password, user.password))) {
-      throw new AppError(400, "auth", errorCode);
+      throw new AppError(400, "global", G_E016);
     }
     logger.info("User and Password check Success. Sending token to the user");
   

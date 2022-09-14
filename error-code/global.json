@@ -14,7 +14,8 @@
       "G_E012": "file uploaded successfully",
       "G_E013": "employee details updated",
       "G_E014": "employee details deleted",
-      "G_E015": "fetch employee detail"
+      "G_E015": "fetch employee detail",
+      "G_E016": "invalid email or password"
     }
   }
   
